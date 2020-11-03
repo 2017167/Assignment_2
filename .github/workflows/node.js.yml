@@ -31,6 +31,7 @@ jobs:
     - run: npm test
       working-directory: devopsass2
     - name: Deploy
+      working-directory: devopsass2
       run: |
        git config --global user.name $user_name
        git config --global user.email $user_email
