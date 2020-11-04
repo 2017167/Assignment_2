@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ develop ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -40,6 +40,6 @@ jobs:
       env:
        user_name: 'github-actions[bot]'
        user_email: 'github-actions[bot]@users.noreply.github.com'
-       github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+       github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN1 }}
        repository: ${{ github.repository }}
 
