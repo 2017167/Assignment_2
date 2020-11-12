@@ -28,18 +28,13 @@ jobs:
       working-directory: devopsass2
     - run: npm run build --if-present
       working-directory: devopsass2
-    - run: npm test
+   
+    - name: Run the tests and generate coverage report
+      run: npm test -- --coverage
       working-directory: devopsass2
-    - name: Deploy
-      working-directory: devopsass2
-      run: |
-       git config --global user.name $user_name
-       git config --global user.email $user_email
-       git remote set-url origin https://${github_token}@github.com/${repository}
-       npm run deploy
-      env:
-       user_name: 'github-actions[bot]'
-       user_email: 'github-actions[bot]@users.noreply.github.com'
-       github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN1 }}
-       repository: ${{ github.repository }}
-
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+       token: ${{ secrets.T }}
+      
+    
